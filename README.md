@@ -28,9 +28,9 @@ Copy `terraform.tfvars.example` to an ignored `terraform.tfvars` if you need to 
     just plan
     just apply
 
-OpenTofu creates the Pages project, associates `thejeffer.net`, and creates the proxied apex CNAME record. It does not upload content or manage OAuth credentials.
+OpenTofu creates the Pages project, connects it to the `blogle/jeffernet` GitHub repository, associates `thejeffer.net`, and creates the proxied apex CNAME record. It does not manage OAuth credentials. The Cloudflare account must have its GitHub connection authorized before applying this source configuration.
 
-Deploy the contents of `public/` through the Cloudflare Pages deployment mechanism configured for the project. Review the resulting public URLs before using them for Google OAuth verification:
+Commits to `main` deploy the contents of `public/` through Cloudflare Pages. Review the resulting public URLs before using them for Google OAuth verification:
 
     https://thejeffer.net
     https://thejeffer.net/privacy

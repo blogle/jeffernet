@@ -14,6 +14,16 @@ resource "cloudflare_pages_project" "site" {
     destination_dir = "public"
     root_dir        = "/"
   }
+
+  source = {
+    type = "github"
+    config = {
+      owner                          = "blogle"
+      repo_name                      = "jeffernet"
+      production_branch              = "main"
+      production_deployments_enabled = true
+    }
+  }
 }
 
 resource "cloudflare_dns_record" "site" {
