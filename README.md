@@ -19,11 +19,11 @@ Use the repository's Nix/direnv environment, then run:
     just fmt-check
     just validate
 
-OpenTofu authentication comes from the `CLOUDFLARE_API_TOKEN` environment variable. The token must have only the Cloudflare Pages and DNS permissions needed for this project. Never place it in this repository, a tfvars file, or command output.
+OpenTofu authentication comes from the `CLOUDFLARE_API_TOKEN` environment variable. The local `.env` file is loaded by direnv and must also contain `CLOUDFLARE_ACCOUNT_ID`; the latter is mapped to the Terraform account variable by `.envrc`. The token must have only Cloudflare Pages Edit, DNS Edit, and Zone Read permissions scoped to this account and zone. Never place the token in this repository, a tfvars file, or command output.
 
 ## Provisioning
 
-Copy `terraform.tfvars.example` to an ignored `terraform.tfvars` and fill in the Cloudflare account and zone IDs. Confirm that `thejeffer.net` is the intended Cloudflare-managed zone before applying:
+Copy `terraform.tfvars.example` to an ignored `terraform.tfvars` if you need to override the safe defaults. The zone is discovered by name, so no zone ID belongs in `.env` or tfvars. Confirm that `thejeffer.net` is the intended Cloudflare-managed zone before applying:
 
     just plan
     just apply

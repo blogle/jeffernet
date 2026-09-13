@@ -4,6 +4,7 @@
 *.tfvars
 !*.tfvars.example
 .env
+.direnv/
 .wrangler/
 node_modules/
 dist/

@@ -1,3 +1,9 @@
+data "cloudflare_zone" "site" {
+  filter = {
+    name = var.domain
+  }
+}
+
 resource "cloudflare_pages_project" "site" {
   account_id        = var.cloudflare_account_id
   name              = var.pages_project_name
@@ -11,7 +17,7 @@ resource "cloudflare_pages_project" "site" {
 }
 
 resource "cloudflare_dns_record" "site" {
-  zone_id = var.cloudflare_zone_id
+  zone_id = data.cloudflare_zone.site.id
   name    = var.domain
   type    = "CNAME"
   content = cloudflare_pages_project.site.subdomain

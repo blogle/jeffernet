@@ -3,11 +3,6 @@ variable "cloudflare_account_id" {
   type        = string
 }
 
-variable "cloudflare_zone_id" {
-  description = "Cloudflare zone ID for thejeffer.net."
-  type        = string
-}
-
 variable "domain" {
   description = "Public apex domain for the static site."
   type        = string
