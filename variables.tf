@@ -12,5 +12,5 @@ variable "domain" {
 variable "pages_project_name" {
   description = "Cloudflare Pages project name."
   type        = string
-  default     = "thejeffer-net"
+  default     = "jeffernet"
 }
