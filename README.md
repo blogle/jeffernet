@@ -32,6 +32,8 @@ OpenTofu creates the Pages project, connects it to the `blogle/jeffernet` GitHub
 
 The domain must delegate authoritative DNS to Cloudflare before the custom Pages domain can become active. If the registrar still serves DNS elsewhere, update the registrar to use the two nameservers shown for the Cloudflare zone. Do not add a second competing apex record at another DNS provider.
 
+Google domain ownership verification is managed as an optional OpenTofu TXT record. Request verification for `thejeffer.net` in Google Search Console or Google Auth Platform, put Google's exact `google-site-verification=...` value in the ignored `.env` as `GOOGLE_SITE_VERIFICATION_TOKEN`, then run `just plan` and `just apply`. The record is not created while that variable is empty.
+
 Commits to `main` deploy the contents of `public/` through Cloudflare Pages. Review the resulting public URLs before using them for Google OAuth verification:
 
     https://thejeffer.net

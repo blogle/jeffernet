@@ -14,3 +14,10 @@ variable "pages_project_name" {
   type        = string
   default     = "jeffernet"
 }
+
+variable "google_site_verification_token" {
+  description = "Exact google-site-verification TXT value supplied by Google; leave empty until received."
+  type        = string
+  sensitive   = true
+  default     = ""
+}

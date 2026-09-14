@@ -35,6 +35,15 @@ resource "cloudflare_dns_record" "site" {
   proxied = true
 }
 
+resource "cloudflare_dns_record" "google_site_verification" {
+  count   = var.google_site_verification_token == "" ? 0 : 1
+  zone_id = data.cloudflare_zone.site.id
+  name    = var.domain
+  type    = "TXT"
+  content = var.google_site_verification_token
+  ttl     = 1
+}
+
 resource "cloudflare_pages_domain" "site" {
   account_id   = var.cloudflare_account_id
   project_name = cloudflare_pages_project.site.name
